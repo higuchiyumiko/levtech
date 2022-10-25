@@ -15,4 +15,7 @@ public function index(Post $post)
  {
      return view('posts/show')->with(['post'=>$post]);
  }
+ public function create(){
+     return view('posts/create');
+ }
 }
