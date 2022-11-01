@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -15,9 +16,9 @@ public function index(Post $post)
  {
      return view('posts/show')->with(['post'=>$post]);
  }
- public function create(){
-     return view('posts/create');
- }
+// public function create(){
+  //   return view('posts/create');
+ //}
  public function store(Request $request,Post $post){
      $input=$request['post'];
      $post->fill($input)->save();
@@ -38,5 +39,9 @@ public function index(Post $post)
      $post->delete();
      return redirect('/');
  }
+ public function create(Category $category)
+{
+    return view('posts/create')->with(['categories' => $category->get()]);
+}
 
 }

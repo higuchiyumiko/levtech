@@ -14,9 +14,16 @@ class Post extends Model
     protected $fillable=[
         'title',
         'body',
+        'category_id'
         ];
     
+        //「1対多」の関係なので単数系に
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
     public function getPaginateByLimit(int $limit_count=5){
-        return $this->orderBy('updated_at','DESC')->paginate($limit_count);
+        return $this::with('category')->orderBy('updated_at','DESC')->paginate($limit_count);
     }
 }
