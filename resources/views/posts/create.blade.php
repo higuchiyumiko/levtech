@@ -11,7 +11,18 @@
     
     <body class="antialiased">
         <h1>Blog Name</h1>
+
         <form action="/posts" method="POST">
+            
+            <div class="category">
+            <h2>Category</h2>
+            <select name="post[category_id]">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            
+        </div>
             @csrf
             <div class="title">
                 <h2>Title</h2>
