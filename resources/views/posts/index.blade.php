@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-       
-        <title>Blog</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-       
-    </head>
-    <body>
+        <x-app-layout>
+              <x-slot name="header">
+        　          Index
+              </x-slot>
+       <p>{{ Auth::user()->name }}</p>
         <h1>Blog Name</h1>
         <a href='/posts/create'>create</a>
         <div class="posts">
@@ -26,9 +18,7 @@
                     </form>
                 </div>
             @endforeach
-            
-        </div>
-        <div class='paginate'>
+            <div class='paginate'>
             {{$posts->links()}}
         </div>
         <script>
@@ -40,5 +30,4 @@
                 }
             }
         </script>
-    </body>
-</html>
+        </x-app-layout>

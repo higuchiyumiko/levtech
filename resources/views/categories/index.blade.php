@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-       
-        <title>Blog</title>
+            <x-app-layout>
+              <x-slot name="header">
+        　          Index
+                 </x-slot>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-       
-    </head>
-    <body>
+        </header>
         <h1>Blog Name</h1>
+        <p>{{ Auth::user()->name }}</p>
         <a href='/posts/create'>create</a>
         <div class="posts">
             @foreach ($posts as $post)
@@ -42,5 +36,4 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
-    </body>
-</html>
+        </x-app-layout>
